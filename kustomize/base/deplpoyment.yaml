@@ -1,1 +1,16 @@
 #Demo Deployment YAML
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: knative
+spec:
+  template:
+    metadata:
+      # This is the name of our new "Revision," it must follow the convention {service-name}-{revision-name}
+      name: knative-appv1
+    spec:
+      containers:
+        - image: borkarrohit/knative-demo-app:v1
+          ports:
+            - containerPort: 80
